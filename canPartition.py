@@ -10,7 +10,7 @@ class Solution(object):
         total = sum(nums)
         if (total%2 != 0): 
             return False
-        dp = [True][False]*(total/2)
+        dp = [True]+[False]*(total/2)
         
         for num in nums:
             for i in range(total/2,0,-1):
