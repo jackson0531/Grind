@@ -10,7 +10,6 @@ class Solution(object):
         freq = Counter(nums)
         # a sorted set
         num_set = sorted(list(set(nums)))
-
         dp = [0] * (len(num_set)+1)
         dp[0] = 0 
         dp[1] = num_set[0]*freq[num_set[0]]
