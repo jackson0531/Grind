@@ -39,5 +39,4 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
 			target = -1*(p[i]+p[j])
 			if target in N:
 				res.add(tuple(sorted([p[i],p[j],target])))
-
 	return res
