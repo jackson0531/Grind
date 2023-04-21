@@ -3,6 +3,7 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
 	#1. Split nums into three lists: negative numbers, positive numbers, and zeros
 	n, p, z = [], [], []
 	for num in nums:
+		
 		if num > 0:
 			p.append(num)
 		elif num < 0: 
