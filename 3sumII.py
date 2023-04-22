@@ -9,6 +9,7 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
 			n.append(num)
 		else:
 			z.append(num)
+			
 
 	#2. Create a separate set for negatives and positives for O(1) look-up times
 	N, P = set(n), set(p)
