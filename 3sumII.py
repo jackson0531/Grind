@@ -4,6 +4,7 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
 	n, p, z = [], [], []
 	for num in nums:
 		if num > 0:
+			
 			p.append(num)
 		elif num < 0: 
 			n.append(num)
