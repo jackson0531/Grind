@@ -1,0 +1,26 @@
+# Math formula: 
+# a, b = a^3 + b^3 + a*b^2
+# a, b, c = a^3 + b^3 + a*b^2 + c^3 + (2a+b)*c^2 
+# result[i] = result[i-1] + nums[i]^3 + prefix[i]*nums[i]^2
+class Solution:
+    def sumOfPower(self, nums: List[int]) -> int:
+        
+        # def backtrack(nums, index, temp): 
+        #     nonlocal result
+        #     if temp: 
+        #         result += temp[0]*temp[-1]*temp[-1]
+        #     for i in range(index, len(nums)): 
+        #         temp.append(nums[i])
+        #         backtrack(nums, i+1, temp)
+        #         temp.pop()
+        nums.sort()
+        factor = 10**9 + 7
+        prefix = [0]*len(nums)
+        for i in range(1, len(nums)):
+            prefix[i] = (2*prefix[i-1] + nums[i-1])%factor
+        result = [0]*len(nums)
+        result[0] = nums[0]**3
+        for i in range(1, len(nums)): 
+            result[i] = result[i-1] + nums[i]**3 + prefix[i]*(nums[i]**2)
+            result[i] %= factor
+        return result[-1]%factor
