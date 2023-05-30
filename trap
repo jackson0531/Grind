@@ -1,0 +1,22 @@
+# two pointer
+# left and right, move the leftMax or rightMax pointer
+# calculate each position's water trap volume
+# 
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        leftMax, rightMax, left, right = height[0],height[-1],0,len(height)-1
+        result = 0
+        while left<right: 
+            if leftMax<=rightMax: # move left to the right
+                left+=1
+                if height[left]<leftMax: 
+                    result += leftMax-height[left]
+                else: 
+                    leftMax = height[left]
+            else: 
+                right-=1
+                if height[right]<rightMax: 
+                    result += rightMax-height[right]
+                else: 
+                    rightMax = height[right]
+        return result
