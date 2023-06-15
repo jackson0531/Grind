@@ -1,0 +1,21 @@
+# given a beautiful string s, only need to check curr with curr-1 and with curr-2
+# if curr is equal to k, go to curr-1 position
+# since we change from back to front, stop when the condition is satisfied and check backwards
+class Solution:
+    def smallestBeautifulString(self, s: str, k: int) -> str:
+        curr, result = len(s)-1, [i for i in s]
+        result[curr] = chr(ord(result[curr]) + 1)
+        while 0<=curr<len(s): 
+            # edge case: out of k 
+            if (ord(result[curr])-ord("a")+1)>k: 
+                if curr==0: 
+                    return ""
+                result[curr] = "a"
+                curr -= 1
+                result[curr] = chr(ord(result[curr]) + 1)
+            elif (curr-1>=0 and result[curr-1]==result[curr]) or (curr-2>=0 and result[curr-2]==result[curr]):
+                result[curr] = chr(ord(result[curr]) + 1)
+            else: 
+                curr+=1
+
+        return ''.join(result)
